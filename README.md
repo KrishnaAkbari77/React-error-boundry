@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# React Error Boundary
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React demo project that implements Error Boundaries -> a React pattern for catching JavaScript errors in the component tree and displaying a fallback UI instead of crashing the entire app.
 
-## Available Scripts
+## What is an Error Boundary?
 
-In the project directory, you can run:
+In React, if a component throws an error during rendering, the whole app breaks. An Error Boundary is a class component that uses `componentDidCatch` and `getDerivedStateFromError` lifecycle methods to catch those errors gracefully and show a user-friendly fallback instead.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Custom `ErrorBoundary` class component implementation
+- Catches runtime errors in child components
+- Displays a fallback UI when an error is detected
+- Demonstrates how to isolate broken components without crashing the whole app
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
+- **Library:** React.js
+- **Language:** JavaScript
+- **Styling:** CSS
+- **Bootstrapped with:** Create React App
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+```bash
+git clone https://github.com/KrishnaAkbari77/React-error-boundry.git
+cd React-error-boundry
+npm install
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+App runs on `http://localhost:3000`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## How It Works
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```jsx
+<ErrorBoundary fallback={<h2>Something went wrong.</h2>}>
+  <ComponentThatMightCrash />
+</ErrorBoundary>
+```
 
-### `npm run eject`
+Wrap any component in `<ErrorBoundary>` and it will catch errors thrown by that component or its children, preventing the entire app from crashing.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## What I Learned
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- How React's error boundary lifecycle methods work (`getDerivedStateFromError`, `componentDidCatch`)
+- Why error boundaries must be class components (hooks cannot replace them yet)
+- How to scope error handling to specific parts of the UI
+- Production-safe error handling patterns in React apps
